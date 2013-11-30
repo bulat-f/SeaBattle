@@ -1,6 +1,13 @@
-main.cpp
-class Coord
-class Ship
-class Player
-class Board
-class Game or Sea
+main -> SeaBattle
+MVC 
+Models
+    Coord
+    Ship
+    Board
+    Map
+    Player
+    Sea # ???
+Contreoller
+    Game # ???
+View
+    # TODO

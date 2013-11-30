@@ -7,3 +7,5 @@ main.o: main.cpp
 	g++ $(obj_flag) main.cpp
 game.o: game.cpp
 	g++ $(obj_flags) game.cpp
+clear:
+	rm -f *.o *~
