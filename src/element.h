@@ -1,4 +1,4 @@
-#ifndef ELEMENT_
+#ifndef ELEMENT_H
 #define ELEMENT_H
 
 #include "ship.h"
@@ -14,9 +14,9 @@ class Element
         };
         Element();
         virtual ~Element();
-        h hit();
+        HitInfo hit();
         bool valid();
-        void setShip(Ship *s);
+        bool setShip(Ship *s);
     protected:
         Ship* parent;
         type state;

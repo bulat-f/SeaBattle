@@ -3,9 +3,11 @@ MVC
 Models
     Coord
     Ship
-    Board
-    Map
+    BoardElement, MapElement: Element
+    Board: Grid<BoardElement>
+    Map: Grid<MapElement>
     Player
+    Computer: Player
     Sea # ???
 Contreoller
     Game # ???

@@ -1,6 +1,6 @@
 #include "element.h"
 #include "coord.h"
-#include "hitInfo.h"
+#include "hit.h"
 
 Element::Element()
 {
@@ -12,7 +12,7 @@ Element::~Element()
     //dtor
 }
 
-hitInfo Element::hit()
+HitInfo Element::hit()
 {
     switch (state)
     {
@@ -20,6 +20,30 @@ hitInfo Element::hit()
         state = DEAD;
         parent->hit();
         if (parent->isAlive())
-            return hitInfo::DEAD
+            return HitInfo::KILL;
+        else
+            return HitInfo::HIT;
+    case WATER:
+        state = MISS;
+        return HitInfo::MISS;
+    default:
+        return HitInfo::INVALID;
     }
+}
+
+bool Element::setShip(Ship *s)
+{
+    if (valid())
+    {
+        parent = s;
+        state = ALIVE;
+        return true;
+    }
+    else
+        return false;
+}
+
+bool Element::valid()
+{
+    return state == WATER;
 }

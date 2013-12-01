@@ -2,9 +2,9 @@
 #define BOARD_H
 
 #include "grid.h"
-#include "elem.h"
+#include "element.h"
 
-class Board : public Grid<Elem>
+class Board : public Grid<Element>
 {
     public:
         Board();
