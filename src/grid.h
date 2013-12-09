@@ -3,10 +3,12 @@
 
 #include "coord.h"
 
+template <typename T>
 class Grid
 {
     public:
-        Grid(Coord& value);
+        Grid();
+        Grid(const Coord& value);
         virtual ~Grid();
 
         T& operator[](const Coord& p);
@@ -22,6 +24,12 @@ class Grid
         int convert(const Coord& p) const;
     private:
 };
+
+template <typename T>
+Grid<T>::Grid(): size(10, 10)
+{
+    m_grid = new T[size.x * size.y];
+}
 
 template <typename T>
 Grid<T>::Grid(const Coord& value): size(value)

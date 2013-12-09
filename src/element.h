@@ -1,25 +1,16 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "ship.h"
-#include "hit.h"
-#include "coord.h"
+#include "hitinfo.h"
 
 class Element
 {
     public:
-        enum type
-        {
-            ALIVE, DEAD, MISS, BORDER, WATER
-        };
         Element();
         virtual ~Element();
-        HitInfo hit();
-        bool valid();
-        bool setShip(Ship *s);
+        virtual HitInfo hit() = 0;
+        virtual bool valid() = 0;
     protected:
-        Ship* parent;
-        type state;
     private:
 };
 

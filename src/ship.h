@@ -1,6 +1,8 @@
 #ifndef SHIP_H
 #define SHIP_H
 
+#include "coord.h"
+
 
 class Ship
 {
@@ -12,7 +14,9 @@ class Ship
         Ship(unsigned char life_value = 1, position pos_value = HORIZONTAL);
         virtual ~Ship();
         void hit();
-        bool isAlive();
+        bool isAlive() const;
+        unsigned char getSize() const;
+        Coord getInc() const;
     protected:
         unsigned char life;
         position pos;
