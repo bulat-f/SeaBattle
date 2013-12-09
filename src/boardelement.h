@@ -18,6 +18,7 @@ class BoardElement: public Element
         virtual HitInfo hit();
         virtual bool valid();
         bool setShip(Ship *s);
+        bool setBorder();
     protected:
         Ship* parent;
         type state;

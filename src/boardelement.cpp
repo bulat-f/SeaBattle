@@ -43,6 +43,17 @@ bool BoardElement::setShip(Ship *s)
         return false;
 }
 
+bool BoardElement::setBorder()
+{
+    if (valid())
+    {
+        state = BORDER;
+        return true;
+    }
+    else
+        return false;
+}
+
 bool BoardElement::valid()
 {
     return state == WATER;

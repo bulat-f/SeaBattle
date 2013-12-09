@@ -17,9 +17,9 @@ int main()
     {
         for (int j = 0; j < n; j++)
         {
-            c.x = i;
-            c.y = j;
-            cout << b[c].valid() << " ";
+            c.x = j;
+            c.y = i;
+            cout << (b[c].valid()?".":"*");
         }
         cout << endl;
     }

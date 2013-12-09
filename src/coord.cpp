@@ -41,7 +41,7 @@ bool Coord::operator==(const Coord& other) const
 {
     return x == other.x && y == other.y;
 }
-
+;
 bool Coord::operator!=(const Coord& other) const
 {
     return !operator==(other);
@@ -50,6 +50,12 @@ bool Coord::operator!=(const Coord& other) const
 bool Coord::valid() const
 {
     return x >= 0 && y >= 0;
+}
+
+Coord Coord::invert()
+{
+    Coord result(y, x);
+    return result;
 }
 
 Coord Coord::invalid()
