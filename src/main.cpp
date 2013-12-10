@@ -9,7 +9,7 @@ int main()
     Coord c(8, 8);
     Board b(c);
     Ship p(4);
-    c.x = 1; c.y = 3;
+    c.x = 0; c.y = 0;
     b.setShip(p, c);
     cout << b.getSize().x << " x " << b.getSize().y << endl;
     int n = b.getSize().x;

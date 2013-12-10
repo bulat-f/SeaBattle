@@ -52,7 +52,7 @@ int Grid<T>::convert(const Coord& p) const
 template <typename T>
 bool Grid<T>::valid(const Coord& p) const
 {
-    return p.x >= 0 && p.x < width() && p.y >= 0 && p.y < height();
+    return p.valid() && (size - p).valid();//p.x >= 0 && p.x < width() && p.y >= 0 && p.y < height();
 }
 
 template <typename T>

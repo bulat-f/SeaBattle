@@ -20,26 +20,41 @@ Coord Board::getSize()
     return size;
 }
 
-bool Board::setShip(Ship &p, Coord c) // TODO: Исправить проблему выхода за границы
+bool Board::setShip(Ship &p, Coord c)
 {
     if (!validForShip(p, c)) return false;
     unsigned char n = p.getSize();
-    Coord border, inc = p.getInc();
+    Coord tmp, border, inc = p.getInc();
     border = inc.invert();
-    (*this)[c - inc].setBorder();
-    (*this)[c - inc + border].setBorder();
-    (*this)[c - inc - border].setBorder();
+
+    //
+    setBorder(c - inc);
+    setBorder(c - inc + border);
+    setBorder(c - inc - border);
+    //
+
     for (int i = 0; i < n; i++)
     {
         (*this)[c].setShip(&p);
-        (*this)[c + border].setBorder();
-        (*this)[c - border].setBorder();
+        setBorder(c + border);
+        setBorder(c - border);
         c += inc;
     }
-    (*this)[c].setBorder();
-    (*this)[c + border].setBorder();
-    (*this)[c - border].setBorder();
+    setBorder(c);
+    setBorder(c + border);
+    setBorder(c - border);
     return true;
+}
+
+bool Board::setBorder(const Coord &c)
+{
+    if (this->valid(c))
+    {
+        (*this)[c].setBorder();
+        return true;
+    }
+    else
+        return false;
 }
 
 bool Board::validForShip(const Ship &p, Coord c)
