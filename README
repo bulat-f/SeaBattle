@@ -11,5 +11,5 @@ Models
     Sea # ???
 Contreoller
     Game # ???
-View
-    # TODO
+Views
+    SeaView <- BoardView, MapView, ElementView
