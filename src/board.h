@@ -13,7 +13,7 @@ class Board: public Grid<BoardElement>
         Board(const Coord& value);
         virtual ~Board();
         Coord getSize();
-        bool setShip(Ship &p, Coord c);
+        bool setShip(Ship *p, Coord c);
         bool setBorder(const Coord &c);
     protected:
         bool validForShip(const Ship &p, Coord c);

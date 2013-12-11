@@ -12,22 +12,33 @@ BoardElement::~BoardElement()
     //dtor
 }
 
-HitInfo BoardElement::hit()
+Hit BoardElement::hit()
 {
+    Hit result;
     switch (state)
     {
     case ALIVE:
         state = DEAD;
         parent->hit();
+        result.destroyed = parent;
         if (parent->isAlive())
-            return HitInfo::HIT;
+        {
+            result.HitInfo = Hit::HIT;
+            return result;
+        }
         else
-            return HitInfo::KILL;
+        {
+            result.HitInfo = Hit::KILL;
+            return result;
+        }
     case MISS:
-        return HitInfo::INVALID;
+    case DEAD:
+        result.HitInfo = Hit::INVALID;
+        return result;
     default:
         state = MISS;
-        return HitInfo::MISS;
+        result.HitInfo = Hit::MISS;
+        return result;
     }
 }
 

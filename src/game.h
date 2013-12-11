@@ -5,9 +5,16 @@
 class Game
 {
     public:
+        enum Status
+        {
+
+        };
         Game();
         virtual ~Game();
+
+        void run();
     protected:
+        Status state;
     private:
 };
 

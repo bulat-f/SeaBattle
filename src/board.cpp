@@ -20,11 +20,11 @@ Coord Board::getSize()
     return size;
 }
 
-bool Board::setShip(Ship &p, Coord c)
+bool Board::setShip(Ship *p, Coord c)
 {
-    if (!validForShip(p, c)) return false;
-    unsigned char n = p.getSize();
-    Coord tmp, border, inc = p.getInc();
+    if (!validForShip(*p, c)) return false;
+    unsigned char n = p->getSize();
+    Coord tmp, border, inc = p->getInc();
     border = inc.invert();
 
     //
@@ -35,7 +35,7 @@ bool Board::setShip(Ship &p, Coord c)
 
     for (int i = 0; i < n; i++)
     {
-        (*this)[c].setShip(&p);
+        (*this)[c].setShip(p);
         setBorder(c + border);
         setBorder(c - border);
         c += inc;

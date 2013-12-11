@@ -62,3 +62,8 @@ Coord Coord::invalid()
 {
     return Coord(-1, -1);
 }
+
+istream& operator>>(istream &in, Coord &c)
+{
+    in >> c.x >> c.y;
+}

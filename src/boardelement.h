@@ -2,7 +2,7 @@
 #define BOARDELEMENT_H
 
 #include "element.h"
-#include "hitinfo.h"
+#include "hit.h"
 #include "ship.h"
 
 
@@ -15,7 +15,7 @@ class BoardElement: public Element
         };
         BoardElement();
         virtual ~BoardElement();
-        virtual HitInfo hit();
+        virtual Hit hit();
         virtual bool valid();
         bool setShip(Ship *s);
         bool setBorder();

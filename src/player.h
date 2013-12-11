@@ -4,10 +4,21 @@
 
 class Player
 {
+    enum Status
+    {
+        WAITING, ACTION, WIN
+    };
     public:
-        Player();
+        Player(Board *bValue, Map *mValue);
         virtual ~Player();
+        void setSquadron();
     protected:
+        Status state;
+        Board *board;
+        Map *map;
+        const int N;
+        const int types;
+        Ship *squadron[N];
     private:
 };
 

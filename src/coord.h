@@ -1,6 +1,9 @@
 #ifndef COORD_H
 #define COORD_H
 
+#include <iostream>
+
+using namespace std;
 
 class Coord
 {
@@ -28,5 +31,7 @@ class Coord
     protected:
     private:
 };
+
+istream& operator>>(istream &in, Coord &c);
 
 #endif // COORD_H
