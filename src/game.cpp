@@ -1,10 +1,13 @@
 #include "game.h"
 
-#include "player.h"
-#include "board.h"
-#include "map.h"
+#include "coord.h"
+#include <iostream>
 
-Game::Game()
+using namespace std;
+
+Game::Game(const Coord &c): board1(c), board2(c), map1(&board2), map2(&board1),
+                            player1(&board1, &map1), player2(&board2, &map2),
+                            view1(&board1, &map1), view2(&board2, &map2)
 {
     //ctor
 }
@@ -16,9 +19,19 @@ Game::~Game()
 
 void Game::run()
 {
-    Board board1, board2;
-    Map map1(&board2), map2(&board1);
-    Player player1(&board1, &map1), player2(&board2, &map2);
-    player1.setSquadron();
-    player2.setSquadron();
+    view1.show();
+    view2.show();
+    Coord c;
+    Ship::position pos;
+    while(!player1.isComplete())
+    {
+        cin >> c >> pos;
+        if (pos == Ship::HORIZONTAL) cout << "HORIZONTAL\n"; else cout << "VERTICAL\n";
+        if (!player1.setShip(c, pos)) cout << "Please, try again\n"; else view1.show();
+    }
+    while(!player2.isComplete())
+    {
+        cin >> c >> pos;
+        if (!player2.setShip(c, pos)) cout << "Please, try again\n"; else view2.show();
+    }
 }

@@ -1,8 +1,8 @@
-objects := main.o board.o coord.o boardelement.o ship.o element.o hit.o map.o mapelement.o
+main_obj := main.o game.o board.o coord.o boardelement.o ship.o element.o hit.o map.o mapelement.o player.o view.o boardelemview.o
 flags := -Wall -std=c++11
 obj_flags = -c $(flags)
-SeaBattle: $(objects)
-	g++ $(flags) $(objects) -o SeaBattle
+SeaBattle: $(main_obj)
+	g++ $(flags) $(main_obj) -o SeaBattle
 main.o: main.cpp
 	g++ $(obj_flags) main.cpp
 board.o: board.cpp grid.h
@@ -21,5 +21,13 @@ map.o: map.cpp
 	g++ $(obj_flags) map.cpp
 mapelement.o: mapelement.cpp
 	g++ $(obj_flags) mapelement.cpp
+game.o: game.cpp
+	g++ $(obj_flags) game.cpp
+player.o: player.cpp
+	g++ $(obj_flags) player.cpp
+view.o: view.cpp
+	g++ $(obj_flags) view.cpp
+boardelemview.o: boardelemview.cpp
+	g++ $(obj_flags) boardelemview.cpp
 clear:
 	rm -f *.o *~ SeaBattle

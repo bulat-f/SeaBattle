@@ -28,10 +28,12 @@ class Coord
         Coord invert();
 
         static Coord invalid();
+        static Coord defaultSize();
     protected:
     private:
 };
 
 istream& operator>>(istream &in, Coord &c);
+// ostream& operator<<(ostream &out, Coord &c);
 
 #endif // COORD_H

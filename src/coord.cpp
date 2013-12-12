@@ -63,7 +63,19 @@ Coord Coord::invalid()
     return Coord(-1, -1);
 }
 
-istream& operator>>(istream &in, Coord &c)
+Coord Coord::defaultSize()
+{
+    return Coord(10, 10);
+}
+
+istream &operator>>(istream &in, Coord &c)
 {
     in >> c.x >> c.y;
+    return in;
 }
+
+//ofstream &operator<<(ofstream &out, Coord &c)
+//{
+//    out << c.x << " " << c.y;
+//    return out;
+//}

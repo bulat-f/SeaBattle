@@ -8,6 +8,8 @@
 
 class Board: public Grid<BoardElement>
 {
+    friend class View;
+
     public:
         Board();
         Board(const Coord& value);
@@ -17,8 +19,6 @@ class Board: public Grid<BoardElement>
         bool setBorder(const Coord &c);
     protected:
         bool validForShip(const Ship &p, Coord c);
-
-        friend class Viewer;
     private:
 };
 

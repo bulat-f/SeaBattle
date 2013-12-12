@@ -2,15 +2,15 @@
 
 #include "coord.h"
 
-Player::Player(Board *bValue, Map *mValue): board(bValue), map(mValue), N(10), types(4)
+Player::Player(Board *bValue, Map *mValue): board(bValue), map(mValue), counter(0)
 {
     //ctor
-    int counter = 0;
+    int iCounter = 0;
     for (int i = 0; i < types; i++)
     {
         for (int k = 1; k <= i + 1; k++)
         {
-            squadron[counter++] = new Ship(types - 1 - i);
+            squadron[iCounter++] = new Ship(types - i);
         }
     }
 }
@@ -24,13 +24,10 @@ Player::~Player()
     }
 }
 
-void Player::setSquadron()
+bool Player::setShip(const Coord &c, Ship::position pos)
 {
-    Coord c;
-    int i = 0;
-    while (i < N)
-    {
-        cin >> c;
-        if (board->setShip(squadron[i], c)) i++; else count << "Please, try again" << endl;
-    }
+    squadron[counter]->setPos(pos);
+    bool flag = board->setShip(squadron[counter], c);
+    if (flag) counter++;
+    return flag;
 }

@@ -8,6 +8,9 @@
 
 class BoardElement: public Element
 {
+    friend class View;
+    friend class BoardElemView;
+
     public:
         enum type
         {
@@ -22,8 +25,6 @@ class BoardElement: public Element
     protected:
         Ship* parent;
         type state;
-
-        friend class Viewer;
     private:
 };
 

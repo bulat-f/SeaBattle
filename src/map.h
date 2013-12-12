@@ -11,6 +11,8 @@
 
 class Map: public Grid<MapElement>
 {
+    friend class View;
+
     public:
         Map(Board *b);
         virtual ~Map();

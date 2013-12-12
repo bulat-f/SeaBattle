@@ -1,5 +1,9 @@
 #include "ship.h"
 
+#include <iostream>
+
+using namespace std;
+
 Ship::Ship(unsigned char life_value, position pos_value): life(life_value), pos(pos_value)
 {
     //ctor
@@ -30,8 +34,15 @@ unsigned char Ship::getSize() const
 
 Coord Ship::getInc() const
 {
-    int x = 0, y = 0;
-    if (pos == HORIZONTAL) x = 1; else y = 1;
-    Coord c(x, y);
+    Coord c(0, 0);
+    if (pos == HORIZONTAL) c.x = 1; else c.y = 1;
     return c;
+}
+
+istream &operator>> (istream &in, Ship::position &pos)
+{
+    int tmp;
+    in >> tmp;
+    pos = (tmp == 0 ? Ship::HORIZONTAL : Ship::VERTICAL);
+    return in;
 }
