@@ -8,8 +8,7 @@ Models
     Map: Grid<MapElement>
     Player
     Computer: Player
-    Sea # ???
 Contreoller
-    Game # ???
+    Game
 Views
     SeaView <- BoardView, MapView, ElementView
