@@ -8,7 +8,7 @@
 class MapElement: public Element
 {
     friend class View;
-
+    friend class MapElemView;
     public:
         enum type
         {
