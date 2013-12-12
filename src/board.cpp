@@ -60,7 +60,7 @@ bool Board::setBorder(const Coord &c)
 bool Board::validForShip(const Ship &p, Coord c)
 {
     unsigned char n = p.getSize();
-    if (!valid(c + p.getInc() * n)) return false;
+    if (!valid(c + p.getInc() * (n - 1))) return false;
     Coord inc = p.getInc();
     for (int i = 0; i < n; i++)
     {
