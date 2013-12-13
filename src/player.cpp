@@ -5,13 +5,9 @@
 Player::Player(Board *bValue, Map *mValue): board(bValue), map(mValue), counter(0)
 {
     //ctor
-    int iCounter = 0;
-    for (int i = 0; i < types; i++)
+    for (int i = 0; i < N; i++)
     {
-        for (int k = 1; k <= i + 1; k++)
-        {
-            squadron[iCounter++] = new Ship(types - i);
-        }
+        squadron[i] = new Ship(1);
     }
 }
 

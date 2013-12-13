@@ -20,9 +20,9 @@ class Player
         Status state;
         Board *board;
         Map *map;
-        const int N = 10;
-        const int types = 4;
-        Ship *squadron[10];
+        const int N = 4;
+        const int types = 1;
+        Ship *squadron[4];
         int counter;
     private:
 };
