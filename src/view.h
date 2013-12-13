@@ -18,6 +18,7 @@ class View
         void drawLine(int n);
         void drawDoubleLine(int n);
         void drawNum(int value, int width);
+        void drawHeader(int N);
     private:
 };
 
