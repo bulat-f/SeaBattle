@@ -22,6 +22,9 @@ void View::show()
     Coord c;
     int n = board->width();
     cout << endl;
+    drawHeader(n);
+    drawHeader(n);
+    cout << endl;
     drawDoubleLine(n);
     cout << endl;
     for (int i = 0; i < n; i++)
@@ -67,4 +70,14 @@ void View::drawNum(int value, int width)
     cout.width(width);
     cout << value;
     cout << "| ";
+}
+
+void View::drawHeader(int N)
+{
+    cout << "   | ";
+    for (int i = 0; i < N; i++)
+    {
+        cout << (char) ('a' + i) << " | ";
+
+    }
 }
