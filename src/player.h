@@ -4,6 +4,7 @@
 #include "board.h"
 #include "map.h"
 #include "ship.h"
+#include "hit.h"
 
 class Player
 {
@@ -15,6 +16,7 @@ class Player
         Player(Board *bValue, Map *mValue);
         virtual ~Player();
         bool setShip(const Coord &c, Ship::position pos = Ship::HORIZONTAL);
+        Hit hit(const Coord &c);
         bool isComplete() { return counter == N; }
     protected:
         Status state;

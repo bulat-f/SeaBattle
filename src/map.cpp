@@ -10,8 +10,9 @@ Map::~Map()
     //dtor
 }
 
-void Map::hit(const Coord &c)
+Hit Map::hit(const Coord &c)
 {
-    Hit res = (*parent)[c].hit();
-    (*this)[c].hit(res);
+    Hit result = (*parent)[c].hit();
+    (*this)[c].hit(result);
+    return result;
 }

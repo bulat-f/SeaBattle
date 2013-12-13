@@ -17,7 +17,7 @@ class Map: public Grid<MapElement>
         Map(Board *b);
         virtual ~Map();
 
-        void hit(const Coord &c);
+        Hit hit(const Coord &c);
     protected:
         Board *parent;
     private:

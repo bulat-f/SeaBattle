@@ -2,6 +2,7 @@
 #define HIT_H
 
 #include <cstddef>
+#include <iostream>
 
 #include "ship.h"
 
@@ -19,4 +20,5 @@ class Hit
     protected:
 };
 
+ostream &operator<< (ostream &out, const Hit info);
 #endif // HIT_H

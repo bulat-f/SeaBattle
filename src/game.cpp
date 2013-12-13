@@ -1,6 +1,7 @@
 #include "game.h"
 
 #include "coord.h"
+#include "hit.h"
 #include <iostream>
 
 using namespace std;
@@ -33,5 +34,12 @@ void Game::run()
     {
         cin >> c >> pos;
         if (!player2.setShip(c, pos)) cout << "Please, try again\n"; else view2.show();
+    }
+    int i = 0;
+    while (i < 5)
+    {
+        cin >> c;
+        cout << player1.hit(c) << endl;
+        view1.show();
     }
 }

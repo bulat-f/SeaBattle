@@ -27,3 +27,8 @@ bool Player::setShip(const Coord &c, Ship::position pos)
     if (flag) counter++;
     return flag;
 }
+
+Hit Player::hit(const Coord &c)
+{
+    return map->hit(c);
+}
