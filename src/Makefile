@@ -1,4 +1,4 @@
-main_obj := main.o game.o board.o coord.o boardelement.o ship.o element.o hit.o map.o mapelement.o player.o view.o boardelemview.o
+main_obj := main.o game.o board.o coord.o boardelement.o ship.o element.o hit.o map.o mapelement.o player.o view.o boardelemview.o mapelemview.o
 flags := -Wall -std=c++11
 obj_flags = -c $(flags)
 SeaBattle: $(main_obj)
@@ -29,5 +29,7 @@ view.o: view.cpp
 	g++ $(obj_flags) view.cpp
 boardelemview.o: boardelemview.cpp
 	g++ $(obj_flags) boardelemview.cpp
+mapelemview.o: mapelemview.cpp
+	g++ $(obj_flags) mapelemview.cpp
 clear:
 	rm -f *.o *~ SeaBattle

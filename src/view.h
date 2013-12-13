@@ -14,6 +14,10 @@ class View
     protected:
         Board *board;
         Map *map;
+
+        void drawLine(int n);
+        void drawDoubleLine(int n);
+        void drawNum(int value, int width);
     private:
 };
 
