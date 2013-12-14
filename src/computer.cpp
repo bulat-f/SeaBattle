@@ -9,3 +9,8 @@ Computer::~Computer()
 {
     //dtor
 }
+
+void Computer::assignSquadron()
+{
+
+}

@@ -9,7 +9,7 @@ class Computer: public Player
     public:
         Computer(Board *bValue, Map *mValue);
         virtual ~Computer();
-
+        void assignSquadron();
     protected:
     private:
 };
