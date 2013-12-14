@@ -3,6 +3,7 @@
 
 #include "coord.h"
 #include "player.h"
+#include "computer.h"
 #include "board.h"
 #include "map.h"
 #include "view.h"
@@ -22,7 +23,8 @@ class Game
         Status state;
         Board board1, board2;
         Map map1, map2;
-        Player player1, player2;
+        Player player;
+        Computer computer;
         View view1, view2;
     private:
 };
