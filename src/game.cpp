@@ -27,7 +27,6 @@ void Game::run()
     while(!player1.isComplete())
     {
         cin >> c >> pos;
-        if (pos == Ship::HORIZONTAL) cout << "HORIZONTAL\n"; else cout << "VERTICAL\n";
         if (!player1.setShip(c, pos)) cout << "Please, try again\n"; else view1.show();
     }
     while(!player2.isComplete())
