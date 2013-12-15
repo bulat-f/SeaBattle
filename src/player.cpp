@@ -4,7 +4,7 @@
 
 Player::Player(Board *bValue, Map *mValue): board(bValue), map(mValue), counter(0)
 {
-    //ctor
+    squadron = new Ship* [N];
     for (int i = 0; i < N; i++)
     {
         squadron[i] = new Ship(1);
@@ -13,11 +13,11 @@ Player::Player(Board *bValue, Map *mValue): board(bValue), map(mValue), counter(
 
 Player::~Player()
 {
-    //dtor
     for (int i = 0; i < N; i++)
     {
         delete squadron[i];
     }
+    delete []squadron;
 }
 
 bool Player::setShip(const Coord &c, Ship::position pos)

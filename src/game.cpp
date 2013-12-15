@@ -30,11 +30,8 @@ void Game::run()
         if (pos == Ship::HORIZONTAL) cout << "HORIZONTAL\n"; else cout << "VERTICAL\n";
         if (!player.setShip(c, pos)) cout << "Please, try again\n"; else view1.show();
     }
-    while(!computer.isComplete())
-    {
-        cin >> c >> pos;
-        if (!computer.setShip(c, pos)) cout << "Please, try again\n"; else view2.show();
-    }
+    computer.assignSquadron();
+    view2.show();
     int i = 0;
     while (i < 5)
     {

@@ -24,7 +24,7 @@ class Player
         Map *map;
         const int N = 4;
         const int types = 1;
-        Ship *squadron[4];
+        Ship **squadron;
         int counter;
     private:
 };
