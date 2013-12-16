@@ -33,3 +33,14 @@ Hit Player::hit(const Coord &c)
 {
     return map->hit(c);
 }
+
+bool Player::isLoser()
+{
+    bool flag;
+    for (int i = 0; i < N; i++)
+    {
+        flag = squadron[i]->isAlive();
+        if (flag) return !flag;
+    }
+    return !flag;
+}

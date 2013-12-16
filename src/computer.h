@@ -2,6 +2,7 @@
 #define COMPUTER_H
 
 #include "player.h"
+#include "hit.h"
 
 
 class Computer: public Player
@@ -10,6 +11,7 @@ class Computer: public Player
         Computer(Board *bValue, Map *mValue);
         virtual ~Computer();
         void assignSquadron();
+        Hit hit();
     protected:
     private:
         int *x;
@@ -21,7 +23,6 @@ class Computer: public Player
             for (int i = 0; i < n; i++)
                 a[i] = i;
         }
-        void Show(int *, int);
 };
 
 #endif // COMPUTER_H

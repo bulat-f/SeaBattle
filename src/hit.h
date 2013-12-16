@@ -17,6 +17,8 @@ class Hit
         ~Hit();
         Info HitInfo;
         Ship *destroyed;
+        bool valid();
+        bool target();
     protected:
 };
 

@@ -12,12 +12,12 @@ class MapElement: public Element
     public:
         enum type
         {
-            DEAD, MISS, WATER // еще раз подумать
+            DEAD, MISS, BORDER, WATER // еще раз подумать
         };
         MapElement();
         virtual ~MapElement();
         virtual bool valid();
-
+        virtual bool setBorder();
         void hit(Hit result);
     protected:
         Ship* parent;

@@ -12,6 +12,16 @@ Hit::~Hit()
 
 }
 
+bool Hit::valid()
+{
+    return HitInfo != INVALID;
+}
+
+bool Hit::target()
+{
+    return HitInfo == KILL || HitInfo == HIT;
+}
+
 ostream &operator<< (ostream &out, const Hit info)
 {
     string str = "";

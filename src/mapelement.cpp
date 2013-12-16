@@ -29,3 +29,14 @@ bool MapElement::valid()
 {
     return state == WATER;
 }
+
+bool MapElement::setBorder()
+{
+    if (valid())
+    {
+        state = BORDER;
+        return true;
+    }
+    else
+        return false;
+}

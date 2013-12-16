@@ -21,21 +21,32 @@ Game::~Game()
 void Game::run()
 {
     view1.show();
-    view2.show();
     Coord c;
-    unsigned char pos;
+    unsigned int pos;
     while(!player.isComplete())
     {
         cin >> c >> pos;
+        cout << c;
         if (!player.setShip(c, pos)) cout << "Please, try again\n"; else view1.show();
     }
     computer.assignSquadron();
-    view2.show();
-    int i = 0;
-    while (i < 5)
+    bool Queue = true;
+    Hit result;
+    while (!player.isLoser() && !computer.isLoser())
     {
-        cin >> c;
-        cout << player.hit(c) << endl;
-        view1.show();
+        if (Queue)
+        {
+            cin >> c;
+            result = player.hit(c);
+            view1.show();
+            cout << result;
+            Queue = !result.valid() || result.target();
+        }
+        else
+        {
+            result = computer.hit();
+            if (result.valid()) cout << "Computer: " << result;
+            Queue = result.valid() || !result.target();
+        }
     }
 }
