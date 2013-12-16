@@ -68,14 +68,29 @@ Coord Coord::defaultSize()
     return Coord(10, 10);
 }
 
-istream &operator>>(istream &in, Coord &c)
+Coord Coord::up()
 {
-    in >> c.x >> c.y;
+    return Coord(0, 1);
+}
+
+Coord Coord::rigth()
+{
+    return Coord(1, 0);
+}
+
+istream &operator>> (istream &in, Coord &c)
+{
+    char x, y;
+    in >> x >> y;
+    if (letter(x)) x -= 'a'; else x -= '1';
+    y -= '1';
+    c.x = x;
+    c.y = y;
     return in;
 }
 
-//ofstream &operator<<(ofstream &out, Coord &c)
-//{
-//    out << c.x << " " << c.y;
-//    return out;
-//}
+ostream &operator<< (ostream &out, Coord &c)
+{
+    out << c.x << " " << c.y;
+    return out;
+}

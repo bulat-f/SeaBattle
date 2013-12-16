@@ -10,6 +10,7 @@ class Element
         virtual ~Element();
         // virtual Hit hit() = 0;
         virtual bool valid() = 0;
+        virtual bool setBorder() = 0;
     protected:
     private:
 };

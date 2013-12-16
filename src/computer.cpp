@@ -25,8 +25,6 @@ void Computer::assignSquadron()
     int i = 0, j = 0, prev_i, prev_j;
     Coord c;
     shuffle(y, ySize);
-    Show(x, xSize); // DEBUG
-    Show(y, ySize); // DEBUG
     srand(time(NULL));
     while (!isComplete())
     {
@@ -62,6 +60,16 @@ void Computer::assignSquadron()
     }
 }
 
+Hit Computer::hit()
+{
+    int x, y;
+    srand(time(NULL));
+    x = rand() % xSize;
+    y = rand() % ySize;
+    Coord c(x, y);
+    return map->hit(c);
+}
+
 void Computer::shuffle(int *a, int n)
 {
     int k, tmp;
@@ -73,11 +81,4 @@ void Computer::shuffle(int *a, int n)
         a[i] = a[k];
         a[k] = tmp;
     }
-}
-
-void Computer::Show(int *a, int n) // DEBUG
-{
-    for (int i = 0; i < n; i++)
-        cout << a[i] << " ";
-    cout << endl;
 }

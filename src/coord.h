@@ -29,11 +29,18 @@ class Coord
 
         static Coord invalid();
         static Coord defaultSize();
+        static Coord up();
+        static Coord rigth();
     protected:
     private:
 };
 
+inline bool letter(const char &ch)
+{
+    return (ch >= 'a' && ch <= 'z');
+}
+
 istream& operator>>(istream &in, Coord &c);
-// ostream& operator<<(ostream &out, Coord &c);
+ostream& operator<<(ostream &out, Coord &c);
 
 #endif // COORD_H

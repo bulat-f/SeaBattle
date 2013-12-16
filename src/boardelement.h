@@ -20,8 +20,8 @@ class BoardElement: public Element
         virtual ~BoardElement();
         virtual Hit hit();
         virtual bool valid();
+        virtual bool setBorder();
         bool setShip(Ship *s);
-        bool setBorder();
     protected:
         Ship* parent;
         type state;
