@@ -23,7 +23,7 @@ void Game::run()
     view1.show();
     view2.show();
     Coord c;
-    Ship::position pos;
+    unsigned char pos;
     while(!player.isComplete())
     {
         cin >> c >> pos;

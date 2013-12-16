@@ -21,19 +21,24 @@ Computer::~Computer()
 void Computer::assignSquadron()
 {
     bool flag;
-    int i = 0, j = 0;
+    unsigned char pos;
+    int i = 0, j = 0, prev_i, prev_j;
     Coord c;
     shuffle(y, ySize);
-    Show(x, xSize);
-    Show(y, ySize);
+    Show(x, xSize); // DEBUG
+    Show(y, ySize); // DEBUG
+    srand(time(NULL));
     while (!isComplete())
     {
+        prev_i = i;
+        prev_j = j;
         flag = false;
+        pos = rand() % 2;
         while (!flag)
         {
             c.x = x[i];
             c.y = y[j];
-            flag = setShip(c);
+            flag = setShip(c, pos);
             if (i < xSize)
             {
                 i++;
@@ -46,7 +51,12 @@ void Computer::assignSquadron()
                     i = 0;
                 }
                 else
-                    return;
+                {
+                    i = prev_i;
+                    j = prev_j;
+                    pos++;
+                    pos %= 2;
+                }
             }
         }
     }
@@ -65,7 +75,7 @@ void Computer::shuffle(int *a, int n)
     }
 }
 
-void Computer::Show(int *a, int n)
+void Computer::Show(int *a, int n) // DEBUG
 {
     for (int i = 0; i < n; i++)
         cout << a[i] << " ";

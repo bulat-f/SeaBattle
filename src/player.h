@@ -15,7 +15,7 @@ class Player
     public:
         Player(Board *bValue, Map *mValue);
         virtual ~Player();
-        bool setShip(const Coord &c, Ship::position pos = Ship::HORIZONTAL);
+        bool setShip(const Coord &c, unsigned char pos = 0);
         Hit hit(const Coord &c);
         bool isComplete() { return counter == N; }
     protected:
