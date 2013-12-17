@@ -2,7 +2,7 @@
 
 #include <cstddef>
 
-BoardElement::BoardElement(): parent(NULL), state(WATER)
+BoardElement::BoardElement(): Element(), state(WATER)
 {
     //ctor
 }

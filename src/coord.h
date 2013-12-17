@@ -41,6 +41,6 @@ inline bool letter(const char &ch)
 }
 
 istream& operator>>(istream &in, Coord &c);
-ostream& operator<<(ostream &out, Coord &c);
+ostream& operator<<(ostream &out, const Coord &c);
 
 #endif // COORD_H

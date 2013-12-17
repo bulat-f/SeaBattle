@@ -23,7 +23,6 @@ class BoardElement: public Element
         virtual bool setBorder();
         bool setShip(Ship *s);
     protected:
-        Ship* parent;
         type state;
     private:
 };

@@ -20,41 +20,19 @@ Coord Board::getSize()
     return size;
 }
 
-bool Board::setShip(Ship *p, Coord c)
+bool Board::setShip(Ship *p, const Coord &c)
 {
     if (!validForShip(*p, c)) return false;
     unsigned char n = p->getSize();
-    Coord tmp, border, inc = p->getInc();
-    border = inc.invert();
-
-    //
-    setBorder(c - inc);
-    setBorder(c - inc + border);
-    setBorder(c - inc - border);
-    //
+    Coord cur = c, inc = p->getInc();
 
     for (int i = 0; i < n; i++)
     {
-        (*this)[c].setShip(p);
-        setBorder(c + border);
-        setBorder(c - border);
-        c += inc;
+        (*this)[cur].setShip(p);
+        cur += inc;
     }
-    setBorder(c);
-    setBorder(c + border);
-    setBorder(c - border);
+    bordered(c);
     return true;
-}
-
-bool Board::setBorder(const Coord &c)
-{
-    if (this->valid(c))
-    {
-        (*this)[c].setBorder();
-        return true;
-    }
-    else
-        return false;
 }
 
 bool Board::validForShip(const Ship &p, Coord c)

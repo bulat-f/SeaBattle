@@ -24,6 +24,9 @@ void MapElemView::show(const MapElement &elem)
     case MapElement::DEAD:
         cout << "X | ";
         return;
+    case MapElement::type::BORDER:
+        cout << "b | ";
+        return;
     default:
         cout << "  | ";
     }

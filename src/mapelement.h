@@ -3,7 +3,6 @@
 
 #include "element.h"
 #include "hit.h"
-#include "ship.h"
 
 class MapElement: public Element
 {
@@ -20,7 +19,6 @@ class MapElement: public Element
         virtual bool setBorder();
         void hit(Hit result);
     protected:
-        Ship* parent;
         type state;
     private:
 };

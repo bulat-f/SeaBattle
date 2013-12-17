@@ -3,6 +3,8 @@
 
 #include "coord.h"
 
+#include <iostream> // DEGUB
+
 template <typename T>
 class Grid
 {
@@ -20,7 +22,8 @@ class Grid
     protected:
         Coord size;
         T* m_grid;
-
+        void bordered(const Coord &c);
+        bool setBorder(const Coord &c);
         int convert(const Coord& p) const;
     private:
 };
@@ -65,6 +68,47 @@ template <typename T>
 const T& Grid<T>::operator[](const Coord& p) const
 {
     return m_grid[convert(p)];
+}
+
+template <typename T>
+void Grid<T>::bordered(const Coord& c)
+{
+    if (! m_grid[convert(c)].haveParent()) return;
+    Coord border, p = c, inc = m_grid[convert(c)].getInc();
+    cout << "DEBUG: BORDERED " << c << " | " << inc << endl;
+    border = inc.invert();
+    while (valid(p) && m_grid[convert(p)].haveParent())
+    {
+        setBorder(p + border);
+        setBorder(p - border);
+        p += inc;
+    }
+    setBorder(p);
+    setBorder(p + border);
+    setBorder(p - border);
+
+    p = c;
+    while (valid(p) && m_grid[convert(p)].haveParent())
+    {
+        setBorder(p + border);
+        setBorder(p - border);
+        p -= inc;
+    }
+    setBorder(p);
+    setBorder(p + border);
+    setBorder(p - border);
+}
+
+template <typename T>
+bool Grid<T>::setBorder(const Coord &c)
+{
+    if (this->valid(c))
+    {
+        (*this)[c].setBorder();
+        return true;
+    }
+    else
+        return false;
 }
 
 #endif // GRID_H

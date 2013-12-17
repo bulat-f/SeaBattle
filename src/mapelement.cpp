@@ -1,6 +1,6 @@
 #include "mapelement.h"
 
-MapElement::MapElement(): parent(NULL), state(WATER)
+MapElement::MapElement(): Element(), state(WATER)
 {
     //ctor
 }
@@ -18,10 +18,12 @@ void MapElement::hit(Hit result)
     case Hit::KILL:
         state = DEAD;
         parent = result.destroyed;
-        break;
+        return;
     case Hit::MISS:
         state = MISS;
-        break;
+        return;
+    case Hit::INVALID:
+        return;
     }
 }
 

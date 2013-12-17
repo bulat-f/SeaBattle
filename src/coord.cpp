@@ -89,7 +89,7 @@ istream &operator>> (istream &in, Coord &c)
     return in;
 }
 
-ostream &operator<< (ostream &out, Coord &c)
+ostream &operator<< (ostream &out, const Coord &c)
 {
     out << c.x << " " << c.y;
     return out;

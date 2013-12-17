@@ -26,7 +26,6 @@ void Game::run()
     while(!player.isComplete())
     {
         cin >> c >> pos;
-        cout << c;
         if (!player.setShip(c, pos)) cout << "Please, try again\n"; else view1.show();
     }
     computer.assignSquadron();
@@ -39,13 +38,13 @@ void Game::run()
             cin >> c;
             result = player.hit(c);
             view1.show();
-            cout << result;
+            cout << result << endl;
             Queue = !result.valid() || result.target();
         }
         else
         {
             result = computer.hit();
-            if (result.valid()) cout << "Computer: " << result;
+            if (result.valid()) cout << "Computer: " << result << endl;
             Queue = result.valid() || !result.target();
         }
     }
