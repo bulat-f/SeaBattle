@@ -8,7 +8,7 @@ using namespace std;
 
 Game::Game(const Coord &c): board1(c), board2(c), map1(&board2), map2(&board1),
                             player(&board1, &map1), computer(&board2, &map2),
-                            view1(&board1, &map1), view2(&board2, &map2)
+                            view1(&board1, &map1), view2(&board2, &map2), current(PLAYER)
 {
     //ctor
 }
@@ -30,22 +30,21 @@ void Game::run()
         if (!player.setShip(c, pos)) cout << "Please, try again\n"; else view1.show();
     }
     computer.assignSquadron();
-    bool Queue = true;
     Hit result;
     while (!player.isLoser() && !computer.isLoser())
     {
-        if (Queue)
+        if (current == PLAYER)
         {
             cin >> c;
             result = player.hit(c);
             view1.show();
-            Queue = !result.valid() || result.target();
+            current = (!result.valid() || result.target()) ? PLAYER : COMPUTER;
         }
         else
         {
             result = computer.hit();
             if (result.valid()) cout << "Computer: " << result << endl;
-            Queue = result.valid() || !result.target();
+            current = (!result.valid() || result.target()) ? COMPUTER : PLAYER;
         }
     }
 }

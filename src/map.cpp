@@ -14,7 +14,6 @@ Hit Map::hit(const Coord &c)
 {
     Hit result = (*this)[c].valid() ? (*parent)[c].hit() : Hit::INVALID;
     (*this)[c].hit(result);
-    cout << result << endl;
     if (result.HitInfo == Hit::KILL) this->bordered(c);
     return result;
 }

@@ -3,8 +3,6 @@
 
 #include "coord.h"
 
-#include <iostream> // DEGUB
-
 template <typename T>
 class Grid
 {
@@ -75,7 +73,6 @@ void Grid<T>::bordered(const Coord& c)
 {
     if (! m_grid[convert(c)].haveParent()) return;
     Coord border, p = c, inc = m_grid[convert(c)].getInc();
-    cout << "DEBUG: BORDERED " << c << " | " << inc << endl;
     border = inc.invert();
     while (valid(p) && m_grid[convert(p)].haveParent())
     {

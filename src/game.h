@@ -11,16 +11,16 @@
 class Game
 {
     public:
-        enum Status
+        enum Queue
         {
-
+            PLAYER, COMPUTER
         };
         Game(const Coord &c = Coord(10, 10));
         virtual ~Game();
 
         void run();
     protected:
-        Status state;
+        Queue current;
         Board board1, board2;
         Map map1, map2;
         Player player;

@@ -17,7 +17,7 @@ element.o: element.cpp hit.o
 	g++ $(obj_flags) element.cpp
 hit.o: hit.cpp
 	g++ $(obj_flags) hit.cpp
-map.o: map.cpp
+map.o: map.cpp grid.h
 	g++ $(obj_flags) map.cpp
 mapelement.o: mapelement.cpp
 	g++ $(obj_flags) mapelement.cpp
