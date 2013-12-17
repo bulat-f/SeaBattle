@@ -3,6 +3,7 @@
 
 #include "player.h"
 #include "hit.h"
+#include "coord.h"
 
 
 class Computer: public Player
@@ -17,12 +18,14 @@ class Computer: public Player
         int *x;
         int *y;
         int xSize, ySize;
+        Coord curHead, curEnd, next;
         void shuffle(int *a, int n);
         inline void init(int *a, int n)
         {
             for (int i = 0; i < n; i++)
                 a[i] = i;
         }
+        Hit randomHit();
 };
 
 #endif // COMPUTER_H

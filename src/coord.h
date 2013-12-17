@@ -20,12 +20,18 @@ class Coord
         Coord operator*(int n) const;
         Coord& operator+=(const Coord& other);
         Coord& operator-=(const Coord& other);
+        Coord& operator*=(const int n);
 
         bool operator==(const Coord& other) const;
         bool operator!=(const Coord& other) const;
         bool valid() const;
+        bool isNil() const;
 
         Coord invert();
+        Coord normal();
+
+        void rotate();
+
 
         static Coord invalid();
         static Coord defaultSize();

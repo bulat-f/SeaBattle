@@ -37,6 +37,13 @@ Coord& Coord::operator-=(const Coord& other)
     return *this;
 }
 
+Coord& Coord::operator*=(const int n)
+{
+    x *= n;
+    y *= n;
+    return *this;
+}
+
 bool Coord::operator==(const Coord& other) const
 {
     return x == other.x && y == other.y;
@@ -52,10 +59,26 @@ bool Coord::valid() const
     return x >= 0 && y >= 0;
 }
 
+bool Coord::isNil() const
+{
+    return x == 0 && y == 0;
+}
+
 Coord Coord::invert()
 {
-    Coord result(y, x);
-    return result;
+    return Coord(y, x);
+}
+
+Coord Coord::normal()
+{
+    return Coord(x / x, y / y);
+}
+
+void Coord::rotate()
+{
+    int tmp = x;
+    x = -y;
+    y = tmp;
 }
 
 Coord Coord::invalid()

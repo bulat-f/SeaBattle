@@ -3,7 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 
-Computer::Computer(Board *bValue, Map *mValue): Player(bValue, mValue), xSize(board->width()), ySize(board->height())
+Computer::Computer(Board *bValue, Map *mValue): Player(bValue, mValue), xSize(board->width()), ySize(board->height()),
+                                                curHead(Coord::invalid()), curEnd(Coord::invalid())
 {
     x = new int [xSize];
     y = new int [ySize];
@@ -62,12 +63,62 @@ void Computer::assignSquadron()
 
 Hit Computer::hit()
 {
+    Hit result;
+    if (curHead.valid())
+    {
+        result = map->hit(curHead + next);
+
+        switch (result.HitInfo)
+        {
+            case Hit::KILL:
+                curHead = Coord::invalid();
+                curEnd = Coord::invalid();
+                break;
+            case Hit::HIT:
+                curHead += next;
+                break;
+            case Hit::MISS:
+                if ((curHead - curEnd).isNil())
+                {
+                    next.rotate();
+                }
+                else
+                {
+                    Coord tmp = curHead;
+                    curHead = curEnd;
+                    curEnd = tmp;
+                    next *= -1;
+                    break;
+                }
+        }
+    }
+    else
+    {
+        result = randomHit();
+    }
+    return result;
+}
+
+Hit Computer::randomHit() // можно перенести в hit()
+{
     int x, y;
+    Coord c;
+    Hit result;
     srand(time(NULL));
-    x = rand() % xSize;
-    y = rand() % ySize;
-    Coord c(x, y);
-    return map->hit(c);
+    do
+    {
+        x = rand() % xSize;
+        y = rand() % ySize;
+        c.x = x; c.y = y;
+        result = map->hit(c);
+    }
+    while (!result.valid());
+    if (result.HitInfo == Hit::HIT)
+    {
+        curHead = curEnd = c;
+        next = Coord(1, 0);
+    }
+    return result;
 }
 
 void Computer::shuffle(int *a, int n)
