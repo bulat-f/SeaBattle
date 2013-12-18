@@ -7,7 +7,7 @@ Player::Player(Board *bValue, Map *mValue): board(bValue), map(mValue), counter(
     squadron = new Ship* [N];
     for (int i = 0; i < N; i++)
     {
-        squadron[i] = new Ship(2);
+        squadron[i] = new Ship(3);
     }
 }
 

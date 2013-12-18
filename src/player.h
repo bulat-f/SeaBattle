@@ -23,7 +23,7 @@ class Player
         Status state;
         Board *board;
         Map *map;
-        const int N = 4;
+        const int N = 3;
         const int types = 1;
         Ship **squadron;
         int counter;
