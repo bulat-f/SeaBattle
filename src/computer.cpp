@@ -3,8 +3,6 @@
 #include <cstdlib>
 #include <ctime>
 
-#include <iostream> // DEBUG
-
 Computer::Computer(Board *bValue, Map *mValue): Player(bValue, mValue), xSize(board->width()), ySize(board->height()),
                                                 curHead(Coord::invalid()), curEnd(Coord::invalid())
 {
@@ -68,7 +66,6 @@ Hit Computer::hit()
     Hit result;
     if (curHead.valid())
     {
-        cout << "Head " << curHead << "End " << curEnd << "Next" << next << endl; // DEBUG
         result = map->hit(curHead + next);
 
         switch (result.HitInfo)
