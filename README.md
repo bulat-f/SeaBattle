@@ -1,18 +1,21 @@
 # SeaBattle: семестровая работа по программировнию
 
-Эт
+### Игра Морской бой
 
-* main -> SeaBattle
-* MVC 
-* Models
-    * Coord
-    * Ship
-    * BoardElement, MapElement: Element
-    * Board: Grid<BoardElement>
-    * Map: Grid<MapElement>
-    * Player
-    * Computer: Player
-* Contreoller
-    * Game
-* Views
-    * SeaView <- BoardView, MapView, ElementView
+Игра состоит из следующих моделей
+* Coord - модель координаты
+* Ship - модель корабля, хранит в себе размерность корабля, жизнь (сколько палуб в строю)
+* BoardElement, MapElement - элементы игрового поля и карты, наследники  Element
+    * имеют состояния DEAD, HIT, MISS, BORDER, WATER
+      хранят указатель на корабль, палуба которого размечана в этом элементе
+* Board: Grid<BoardElement> - игровое поле
+* Map: Grid<MapElement> - карта, хранит указатель на поле соперника
+* Player - класс игрока
+    * хранит  поле и карту
+* Computer - игрок-компьютер, наследник Player. Умеет сам определять куда стрелять
+
+Класс Game организует игровой процесс
+Классы для отображения поля и карты игрока
+* MapElemView - "рисует" элемент карты
+* BoardElemView - "рисует" элемент игрового поля
+* SeaView - отображает игровое поле и карту игрока
